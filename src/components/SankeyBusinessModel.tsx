@@ -172,7 +172,7 @@ const SankeyBusinessModel: React.FC = () => {
             .duration(1500)
             .style("opacity", 0.9)
             .attrTween("cx", function() {
-              return function(t) {
+              return function(t: number): number {
                 // Parametric equation for cubic Bezier curve
                 const x = Math.pow(1-t, 3) * sourceX + 
                           3 * Math.pow(1-t, 2) * t * controlX1 + 
@@ -182,7 +182,7 @@ const SankeyBusinessModel: React.FC = () => {
               };
             })
             .attrTween("cy", function() {
-              return function(t) {
+              return function(t: number): number {
                 // Parametric equation for cubic Bezier curve
                 const y = Math.pow(1-t, 3) * sourceY + 
                           3 * Math.pow(1-t, 2) * t * controlY1 + 

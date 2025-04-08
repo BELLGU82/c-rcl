@@ -81,7 +81,7 @@ const ROITimelineChart: React.FC = () => {
     
     // Add Y axis
     chart.append("g")
-      .call(d3.axisLeft(y).tickFormat(d => `$${d / 1000}k`))
+      .call(d3.axisLeft(y).tickFormat(d => `$${(d as number) / 1000}k`))
       .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", -40)
