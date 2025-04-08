@@ -6,13 +6,13 @@ const Section5: React.FC = () => {
   const {
     t
   } = useLanguage();
-  return <section id="section5" className="section bg-gradient-to-b from-white to-accent-50 text-5xl text-gray-950">
+  return <section id="section5" className="section bg-gradient-to-b from-white to-accent-50">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section5.title')}</h1>
         
         <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
           <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.savings.title')}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-zinc-950">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-inherit">
             <div className="p-4 bg-transparent border border-black rounded-lg text-center">
               <p className="text-lg font-bold text-accent-800">{t('section5.savings.point1')}</p>
             </div>
