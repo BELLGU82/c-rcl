@@ -2,6 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { 
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuLink
+} from '@/components/ui/navigation-menu';
 
 const Header: React.FC = () => {
   const { t, language, setLanguage, dir } = useLanguage();
@@ -37,7 +43,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex-shrink-0">
             <img 
               src="/lovable-uploads/bfcd0dfb-d85f-44c8-af1c-b9ee09adbcf4.png" 
               alt="C-RCL Logo" 
@@ -45,38 +51,55 @@ const Header: React.FC = () => {
             />
           </div>
 
-          {/* Desktop menu */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection('section1')}
-              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
-            >
-              {t('nav.home')}
-            </button>
-            <button
-              onClick={() => scrollToSection('section2')}
-              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
-            >
-              {t('nav.problem')}
-            </button>
-            <button
-              onClick={() => scrollToSection('section3')}
-              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
-            >
-              {t('nav.tech')}
-            </button>
-            <button
-              onClick={() => scrollToSection('section4')}
-              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
-            >
-              {t('nav.market')}
-            </button>
-            <button
-              onClick={() => scrollToSection('section5')}
-              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
-            >
-              {t('nav.business')}
-            </button>
+          {/* Desktop menu - centered */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <NavigationMenu className="mx-auto">
+              <NavigationMenuList className="gap-8">
+                <NavigationMenuItem>
+                  <NavigationMenuLink 
+                    className="text-text-primary hover:opacity-70 transition-colors font-tt-mono cursor-pointer"
+                    onClick={() => scrollToSection('section1')}
+                  >
+                    {t('nav.home')}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink 
+                    className="text-text-primary hover:opacity-70 transition-colors font-tt-mono cursor-pointer"
+                    onClick={() => scrollToSection('section2')}
+                  >
+                    {t('nav.problem')}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink 
+                    className="text-text-primary hover:opacity-70 transition-colors font-tt-mono cursor-pointer"
+                    onClick={() => scrollToSection('section3')}
+                  >
+                    {t('nav.tech')}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink 
+                    className="text-text-primary hover:opacity-70 transition-colors font-tt-mono cursor-pointer"
+                    onClick={() => scrollToSection('section4')}
+                  >
+                    {t('nav.market')}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink 
+                    className="text-text-primary hover:opacity-70 transition-colors font-tt-mono cursor-pointer"
+                    onClick={() => scrollToSection('section5')}
+                  >
+                    {t('nav.business')}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+
+          <div className="flex-shrink-0">
             <Button
               variant="outline"
               onClick={toggleLanguage}
@@ -84,21 +107,14 @@ const Header: React.FC = () => {
             >
               {t('language')}
             </Button>
-          </nav>
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <Button
               variant="outline"
-              onClick={toggleLanguage}
-              className="text-text-primary border-black hover:opacity-70 transition-colors mr-2"
-            >
-              {t('language')}
-            </Button>
-            <Button
-              variant="outline"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-text-primary border-black hover:opacity-70"
+              className="text-text-primary border-black hover:opacity-70 ml-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
