@@ -15,6 +15,7 @@ interface Message {
 }
 
 const WEBHOOK_URL = 'https://primary-production-6fe5.up.railway.app/webhook/rag';
+const SESSION_ID_KEY = 'chat_session_id';
 
 const Chat: React.FC = () => {
   const { t, language, dir } = useLanguage();
@@ -25,7 +26,27 @@ const Chat: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [lastError, setLastError] = useState<string | null>(null);
+  const [sessionId, setSessionId] = useState<string>('');
   const messageEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize sessionId on component mount
+  useEffect(() => {
+    const storedSessionId = localStorage.getItem(SESSION_ID_KEY);
+    if (storedSessionId) {
+      setSessionId(storedSessionId);
+    } else {
+      // Generate a new session ID if none exists
+      const newSessionId = generateSessionId();
+      localStorage.setItem(SESSION_ID_KEY, newSessionId);
+      setSessionId(newSessionId);
+    }
+  }, []);
+
+  // Generate a random session ID
+  const generateSessionId = () => {
+    return Math.random().toString(36).substring(2, 15) + 
+           Math.random().toString(36).substring(2, 15);
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -65,7 +86,8 @@ const Chat: React.FC = () => {
         body: JSON.stringify({
           message: messageToSend,
           currentUrl: window.location.href,
-          language: language
+          language: language,
+          sessionId: sessionId // Send sessionId with each message
         }),
       });
 
