@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -97,18 +96,31 @@ const Chat: React.FC = () => {
 
       const data = await response.json();
       
+      let responseText = '';
+      
       if (data.text) {
+        responseText = data.text;
+      } else if (data.output) {
+        responseText = data.output;
+      } else if (Array.isArray(data) && data.length > 0 && data[0].output) {
+        responseText = data[0].output;
+      } else if (data.message) {
+        throw new Error(data.message);
+      } else {
+        console.log('Unexpected response format:', data);
+        throw new Error("Received an unexpected response format from the server");
+      }
+      
+      if (responseText) {
         setMessages(prevMessages => [
           ...prevMessages,
           {
             role: 'assistant',
-            content: data.text
+            content: responseText
           }
         ]);
-      } else if (data.message) {
-        throw new Error(data.message);
       } else {
-        throw new Error("Received an empty response from the server");
+        throw new Error("No response text found in the server response");
       }
     } catch (error) {
       console.error('Error sending message:', error);
@@ -138,15 +150,12 @@ const Chat: React.FC = () => {
   const retryLastMessage = () => {
     if (messages.length < 1) return;
     
-    // Find the last user message
     const userMessages = messages.filter(m => m.role === 'user');
     if (userMessages.length > 0) {
       const lastUserMessage = userMessages[userMessages.length - 1].content;
       
-      // Remove the error message and the last user message
       setMessages(messages.slice(0, -2));
       
-      // Resend the last user message
       setTimeout(() => {
         handleSend(lastUserMessage);
       }, 300);
