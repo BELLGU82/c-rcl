@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AgentNetworkGraph from '../AgentNetworkGraph';
-
 const Section3: React.FC = () => {
   const {
     t
@@ -43,5 +41,4 @@ const Section3: React.FC = () => {
       </div>
     </section>;
 };
-
 export default Section3;
