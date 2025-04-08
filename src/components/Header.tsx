@@ -38,7 +38,11 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="text-2xl font-bold gradient-text">C-rcl</div>
+            <img 
+              src="/lovable-uploads/bfcd0dfb-d85f-44c8-af1c-b9ee09adbcf4.png" 
+              alt="C-RCL Logo" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop menu */}
