@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
@@ -9,6 +10,7 @@ import Section4 from '@/components/sections/Section4';
 import Section5 from '@/components/sections/Section5';
 import Quote from '@/components/Quote';
 import Contact from '@/components/Contact';
+
 const Index = () => {
   return <LanguageProvider>
       <div className="min-h-screen">
@@ -18,11 +20,13 @@ const Index = () => {
           <Section2 />
           <Section3 />
           <Section4 />
+          <Quote />
           <Section5 />
-          
+          <Contact />
         </main>
         <Chat />
       </div>
     </LanguageProvider>;
 };
+
 export default Index;
