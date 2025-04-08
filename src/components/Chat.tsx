@@ -1,14 +1,17 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MessageCircle, X, ChevronUp, ChevronDown, Send, Minimize } from 'lucide-react';
+import { MessageCircle, X, ChevronUp, ChevronDown, Send, Minimize, RefreshCw } from 'lucide-react';
+import LoadingAnimation from '@/components/LoadingAnimation';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  error?: boolean;
 }
 
 const WEBHOOK_URL = 'https://primary-production-6fe5.up.railway.app/webhook/rag';
@@ -21,6 +24,7 @@ const Chat: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [lastError, setLastError] = useState<string | null>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,17 +42,19 @@ const Chat: React.FC = () => {
     }
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!userInput.trim()) return;
+  const handleSend = async (inputMessage?: string) => {
+    const messageToSend = inputMessage || userInput;
+    if (!messageToSend.trim()) return;
 
     const newUserMessage: Message = {
       role: 'user',
-      content: userInput
+      content: messageToSend
     };
 
-    setMessages([...messages, newUserMessage]);
+    setMessages(prevMessages => [...prevMessages, newUserMessage]);
     setUserInput('');
     setIsLoading(true);
+    setLastError(null);
 
     try {
       const response = await fetch(WEBHOOK_URL, {
@@ -57,7 +63,7 @@ const Chat: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: userInput,
+          message: messageToSend,
           currentUrl: window.location.href,
           language: language
         }),
@@ -69,15 +75,25 @@ const Chat: React.FC = () => {
 
       const data = await response.json();
       
-      setMessages(prevMessages => [
-        ...prevMessages,
-        {
-          role: 'assistant',
-          content: data.text || "I'm sorry, I couldn't process your request."
-        }
-      ]);
+      if (data.text) {
+        setMessages(prevMessages => [
+          ...prevMessages,
+          {
+            role: 'assistant',
+            content: data.text
+          }
+        ]);
+      } else if (data.message) {
+        throw new Error(data.message);
+      } else {
+        throw new Error("Received an empty response from the server");
+      }
     } catch (error) {
       console.error('Error sending message:', error);
+      
+      const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+      setLastError(errorMessage);
+      
       toast({
         title: "Error",
         description: "Failed to connect to the assistant. Please try again.",
@@ -88,11 +104,30 @@ const Chat: React.FC = () => {
         ...prevMessages,
         {
           role: 'assistant',
-          content: "I'm sorry, I couldn't process your request due to a connection error. Please try again later."
+          content: "I'm sorry, I couldn't process your request due to a connection error. Please try again later.",
+          error: true
         }
       ]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const retryLastMessage = () => {
+    if (messages.length < 1) return;
+    
+    // Find the last user message
+    const userMessages = messages.filter(m => m.role === 'user');
+    if (userMessages.length > 0) {
+      const lastUserMessage = userMessages[userMessages.length - 1].content;
+      
+      // Remove the error message and the last user message
+      setMessages(messages.slice(0, -2));
+      
+      // Resend the last user message
+      setTimeout(() => {
+        handleSend(lastUserMessage);
+      }, 300);
     }
   };
 
@@ -105,7 +140,7 @@ const Chat: React.FC = () => {
 
   const askQuestion = (question: string) => {
     setUserInput(question);
-    handleSend();
+    handleSend(question);
   };
 
   const toggleChat = () => {
@@ -157,10 +192,24 @@ const Chat: React.FC = () => {
                 className={`max-w-[80%] rounded-lg px-4 py-2 ${
                   message.role === 'user'
                     ? 'bg-[#f7f7f7] text-[#313131] border border-[#313131]/20'
+                    : message.error
+                    ? 'bg-red-50 text-red-800 border border-red-200'
                     : 'bg-muted'
                 }`}
               >
                 {message.content}
+                {message.error && (
+                  <div className="mt-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={retryLastMessage}
+                      className="text-xs flex items-center gap-1 bg-white"
+                    >
+                      <RefreshCw className="h-3 w-3" /> Try Again
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           ))
@@ -168,16 +217,19 @@ const Chat: React.FC = () => {
         {isLoading && (
           <div className="flex justify-start">
             <div className="max-w-[80%] rounded-lg px-4 py-2 bg-muted">
-              <div className="flex space-x-2">
-                <div className="h-2 w-2 bg-muted-foreground rounded-full animate-pulse"></div>
-                <div className="h-2 w-2 bg-muted-foreground rounded-full animate-pulse delay-75"></div>
-                <div className="h-2 w-2 bg-muted-foreground rounded-full animate-pulse delay-150"></div>
-              </div>
+              <LoadingAnimation size="sm" color="primary" />
             </div>
           </div>
         )}
         <div ref={messageEndRef} />
       </CardContent>
+      {lastError && (
+        <div className="px-3 py-2 bg-red-100 text-red-800 text-sm">
+          <div className="flex items-center justify-between">
+            <div>Error: Failed to connect to the assistant. Please try again.</div>
+          </div>
+        </div>
+      )}
       <div className="p-3 border-t">
         {messages.length === 0 && (
           <div className="mb-3">
@@ -228,7 +280,7 @@ const Chat: React.FC = () => {
             className="flex-1"
           />
           <Button 
-            onClick={handleSend} 
+            onClick={() => handleSend()} 
             disabled={isLoading || !userInput.trim()} 
             size="icon"
             className="bg-[#f7f7f7] hover:bg-[#e7e7e7] text-[#313131] border border-[#313131]/20"
