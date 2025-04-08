@@ -7,12 +7,6 @@ import { useToast } from '@/components/ui/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MessageCircle, X, ChevronUp, ChevronDown, Send, Minimize, RefreshCw } from 'lucide-react';
 import LoadingAnimation from '@/components/LoadingAnimation';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -33,7 +27,6 @@ const Chat: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [lastError, setLastError] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState<string>('');
-  const [showSuggestions, setShowSuggestions] = useState(true);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   // Initialize sessionId on component mount
@@ -70,19 +63,9 @@ const Chat: React.FC = () => {
     }
   }, [messages]);
 
-  // Effect to hide suggestions when there are messages
-  useEffect(() => {
-    if (messages.length > 0) {
-      setShowSuggestions(false);
-    }
-  }, [messages]);
-
   const handleSend = async (inputMessage?: string) => {
     const messageToSend = inputMessage || userInput;
     if (!messageToSend.trim()) return;
-
-    // Hide suggestions as soon as a message is sent
-    setShowSuggestions(false);
     
     const newUserMessage: Message = {
       role: 'user',
@@ -188,11 +171,6 @@ const Chat: React.FC = () => {
     }
   };
 
-  const askQuestion = (question: string) => {
-    setUserInput(question);
-    handleSend(question);
-  };
-
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
@@ -205,7 +183,6 @@ const Chat: React.FC = () => {
     setMessages([]);
     setUserInput('');
     setLastError(null);
-    setShowSuggestions(true);
   };
 
   const renderChat = () => (
@@ -299,55 +276,6 @@ const Chat: React.FC = () => {
         </div>
       )}
       <div className="p-3 border-t">
-        {messages.length === 0 && showSuggestions && (
-          <div className="mb-3">
-            <p className="text-sm text-muted-foreground mb-2">{t('chat.suggested')}</p>
-            <div className="flex flex-wrap gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-xs w-full flex justify-between items-center"
-                  >
-                    {t('chat.question1')}
-                    <ChevronDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white w-60">
-                  <DropdownMenuItem onClick={() => askQuestion(t('chat.question1'))} className="cursor-pointer">
-                    {t('chat.question1')}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs"
-                onClick={() => askQuestion(t('chat.question2'))}
-              >
-                {t('chat.question2')}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs"
-                onClick={() => askQuestion(t('chat.question3'))}
-              >
-                {t('chat.question3')}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs"
-                onClick={() => askQuestion(t('chat.question4'))}
-              >
-                {t('chat.question4')}
-              </Button>
-            </div>
-          </div>
-        )}
         <div className="flex space-x-2">
           <Input
             value={userInput}
