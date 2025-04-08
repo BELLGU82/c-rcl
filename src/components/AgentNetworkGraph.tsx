@@ -17,15 +17,16 @@ const AgentNetworkGraph: React.FC = () => {
     // Clear previous content
     svg.selectAll("*").remove();
     
-    const width = 600;
-    const height = 500;
+    // Increase the overall size
+    const width = 700; // Increased from 600
+    const height = 600; // Increased from 500
     const centerX = width / 2;
     const centerY = height / 2;
     
     // Create a group for the entire visualization
     const g = svg.append("g");
     
-    // Define agents
+    // Define agents with larger radius values and more spread out
     const agents = [
       {
         id: 'central',
@@ -36,7 +37,7 @@ const AgentNetworkGraph: React.FC = () => {
         x: centerX,
         y: centerY,
         color: "#ff8000",
-        radius: 50
+        radius: 60 // Increased from 50
       },
       {
         id: 'monitoring',
@@ -45,9 +46,9 @@ const AgentNetworkGraph: React.FC = () => {
           ? 'Real-time monitoring of vital signs, medication intake, activities' 
           : 'ניטור בזמן אמת של סימנים חיוניים, נטילת תרופות, פעילויות',
         x: centerX,
-        y: centerY - 120,
+        y: centerY - 160, // Increased distance from center
         color: "#00afaf",
-        radius: 35
+        radius: 45 // Increased from 35
       },
       {
         id: 'cognitive',
@@ -55,10 +56,10 @@ const AgentNetworkGraph: React.FC = () => {
         description: language === 'en' 
           ? 'Tracks cognitive changes and personalizes mental exercises' 
           : 'עוקב אחר שינויים קוגניטיביים ומתאים אישית תרגילים מנטליים',
-        x: centerX + 120,
-        y: centerY - 70,
+        x: centerX + 140, // Adjusted position
+        y: centerY - 100, // Adjusted position
         color: "#008c8c",
-        radius: 35
+        radius: 45 // Increased from 35
       },
       {
         id: 'emotional',
@@ -66,10 +67,10 @@ const AgentNetworkGraph: React.FC = () => {
         description: language === 'en' 
           ? 'Monitors mood and emotional state, suggests interventions' 
           : 'מנטר מצב רוח ומצב רגשי, מציע התערבויות',
-        x: centerX + 120,
-        y: centerY + 70,
+        x: centerX + 140, // Adjusted position
+        y: centerY + 100, // Adjusted position
         color: "#006969",
-        radius: 35
+        radius: 45 // Increased from 35
       },
       {
         id: 'coordination',
@@ -78,9 +79,9 @@ const AgentNetworkGraph: React.FC = () => {
           ? 'Schedules appointments and coordinates between caregivers' 
           : 'מתזמן פגישות ומתאם בין מטפלים',
         x: centerX,
-        y: centerY + 120,
+        y: centerY + 160, // Increased distance from center
         color: "#33bfbf",
-        radius: 35
+        radius: 45 // Increased from 35
       },
       {
         id: 'safety',
@@ -88,10 +89,10 @@ const AgentNetworkGraph: React.FC = () => {
         description: language === 'en' 
           ? 'Detects risks and issues alerts for falls, wandering, etc.' 
           : 'מזהה סיכונים ומנפיק התראות לנפילות, שיטוט, וכו\'',
-        x: centerX - 120,
-        y: centerY + 70,
+        x: centerX - 140, // Adjusted position
+        y: centerY + 100, // Adjusted position
         color: "#66dbe1",
-        radius: 35
+        radius: 45 // Increased from 35
       },
       {
         id: 'medical',
@@ -99,10 +100,10 @@ const AgentNetworkGraph: React.FC = () => {
         description: language === 'en' 
           ? 'Tracks health conditions and medication management' 
           : 'עוקב אחר מצבים רפואיים וניהול תרופות',
-        x: centerX - 120,
-        y: centerY - 70,
+        x: centerX - 140, // Adjusted position
+        y: centerY - 100, // Adjusted position
         color: "#99dfdf",
-        radius: 35
+        radius: 45 // Increased from 35
       }
     ];
     
@@ -135,8 +136,8 @@ const AgentNetworkGraph: React.FC = () => {
         return target ? target.y : 0;
       })
       .attr("stroke", "#000")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.6)
+      .attr("stroke-width", 1.5) // Increased from 1
+      .attr("opacity", 0.7) // Slightly increased from 0.6
       .attr("stroke-dasharray", function() {
         return this.getTotalLength();
       })
@@ -144,13 +145,13 @@ const AgentNetworkGraph: React.FC = () => {
         return this.getTotalLength();
       });
     
-    // Create animated data flow
+    // Create animated data flow with larger dots
     g.selectAll(".data-flow")
       .data(links)
       .enter()
       .append("circle")
       .attr("class", "data-flow")
-      .attr("r", 4)
+      .attr("r", 5) // Increased from 4
       .attr("fill", "#ff8000")
       .style("opacity", 0)
       .each(function(d) {
@@ -162,7 +163,7 @@ const AgentNetworkGraph: React.FC = () => {
             .attr("cy", source.y)
             .transition()
             .delay(Math.random() * 2000)
-            .duration(1500)
+            .duration(1800) // Increased slightly from 1500
             .attr("cx", target.x)
             .attr("cy", target.y)
             .style("opacity", 0.8)
@@ -173,7 +174,7 @@ const AgentNetworkGraph: React.FC = () => {
                 .style("opacity", 0.8)
                 .transition()
                 .delay(Math.random() * 500)
-                .duration(1500)
+                .duration(1800) // Match the above duration
                 .attr("cx", target.x)
                 .attr("cy", target.y)
                 .on("end", repeat);
@@ -212,22 +213,22 @@ const AgentNetworkGraph: React.FC = () => {
       .attr("fill", d => d.color)
       .attr("opacity", 0.3)
       .attr("stroke", "#000")
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 1.5); // Increased from 1
     
     // Add circles for each agent with transparent fill and black stroke
     nodes.append("circle")
       .attr("r", d => d.radius)
       .attr("fill", "transparent")
       .attr("stroke", "#000")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.8);
+      .attr("stroke-width", 1.5) // Increased from 1
+      .attr("opacity", 0.9); // Increased from 0.8
     
-    // Add labels
+    // Add labels with larger font size
     nodes.append("text")
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .attr("fill", "#313131")
-      .attr("font-size", d => d.id === 'central' ? "14px" : "12px")
+      .attr("font-size", d => d.id === 'central' ? "16px" : "14px") // Increased from 14px/12px
       .attr("font-weight", "bold")
       .text(d => d.name)
       .each(function(d) {
@@ -272,12 +273,12 @@ const AgentNetworkGraph: React.FC = () => {
   }, [language]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto"> {/* Increased from max-w-3xl */}
       <svg
         ref={svgRef}
         width="100%"
-        height="500"
-        viewBox="0 0 600 500"
+        height="600" /* Increased from 500 */
+        viewBox="0 0 700 600" /* Updated to match new dimensions */
         preserveAspectRatio="xMidYMid meet"
       />
       <div
