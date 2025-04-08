@@ -2,7 +2,6 @@
 import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
-import Chat from '@/components/Chat';
 import Section1 from '@/components/sections/Section1';
 import Section2 from '@/components/sections/Section2';
 import Section3 from '@/components/sections/Section3';
@@ -24,7 +23,6 @@ const Index = () => {
           <Section5 />
           <Contact />
         </main>
-        <Chat />
       </div>
     </LanguageProvider>;
 };

@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import MarketGrowthChart from '../MarketGrowthChart';
 import SankeyBusinessModel from '../SankeyBusinessModel';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+
 const Section4: React.FC = () => {
   const {
     t
@@ -49,4 +50,5 @@ const Section4: React.FC = () => {
       </div>
     </section>;
 };
+
 export default Section4;
