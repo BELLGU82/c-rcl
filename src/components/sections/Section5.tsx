@@ -1,31 +1,22 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ROITimelineChart from '../ROITimelineChart';
 import SankeyBusinessModel from '../SankeyBusinessModel';
+import SavingsDataCards from '../SavingsDataCards';
+import Timeline from '../Timeline';
+import Quote from '../Quote';
+
 const Section5: React.FC = () => {
   const {
     t
   } = useLanguage();
-  return <section id="section5" className="section bg-gradient-to-b from-white to-accent-50 bg-[#f7f7f7]">
+  return <section id="section5" className="section bg-transparent">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section5.title')}</h1>
         
-        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
-          <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.savings.title')}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-inherit bg-[#f7f7f7]">
-            <div className="p-4 border border-black rounded-lg text-center bg-[#f7f7f7]">
-              <p className="text-lg font-bold text-accent-800">{t('section5.savings.point1')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
-              <p className="text-lg font-bold text-accent-800">{t('section5.savings.point2')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
-              <p className="text-lg font-bold text-accent-800">{t('section5.savings.point3')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
-              <p className="text-lg font-bold text-accent-800">{t('section5.savings.point4')}</p>
-            </div>
-          </div>
+        <div className="mb-12">
+          <SavingsDataCards />
         </div>
         
         <div className="mb-12">
@@ -68,36 +59,12 @@ const Section5: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
-          <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.timeline.title')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-transparent border border-black rounded-lg">
-              <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage1')}</p>
-              <p className="text-sm text-brand-700">{t('section5.timeline.stage1.points')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg">
-              <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage2')}</p>
-              <p className="text-sm text-brand-700">{t('section5.timeline.stage2.points')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg">
-              <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage3')}</p>
-              <p className="text-sm text-brand-700">{t('section5.timeline.stage3.points')}</p>
-            </div>
-            <div className="p-4 bg-transparent border border-black rounded-lg">
-              <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage4')}</p>
-              <p className="text-sm text-brand-700">{t('section5.timeline.stage4.points')}</p>
-            </div>
-          </div>
+        <div className="mb-12">
+          <Timeline />
         </div>
         
-        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
-          <blockquote className="italic text-lg text-center mb-2">
-            {t('section5.cta.quote')}
-          </blockquote>
-          <p className="text-right text-gray-700 mb-4">{t('section5.cta.author')}</p>
-          <p className="text-center text-xl font-medium text-brand-700">
-            {t('section5.cta.conclusion')}
-          </p>
+        <div className="mb-12">
+          <Quote />
         </div>
         
         <div className="bg-transparent border border-black p-6 rounded-lg shadow-md text-text-primary text-center">
