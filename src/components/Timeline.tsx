@@ -57,7 +57,7 @@ const Timeline: React.FC = () => {
           >
             <div className="flex items-center mb-2">
               <h3 className="font-bold text-lg text-text-primary">{stage.title}</h3>
-              {stage.status === 'completed' && <CheckCircle className="w-5 h-5 ml-2 text-green-500" />}
+              {stage.status === 'completed' && <CheckCircle className="w-5 h-5 ml-2 text-[#4e514e]" />}
             </div>
             
             {stage.timeframe && (

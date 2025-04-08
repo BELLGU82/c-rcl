@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +16,7 @@
     --primary: 180 100% 35%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 24 100% 50%;
+    --secondary: 60 1% 11%;  /* Changed from orange hue to #1c1c1b */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -130,5 +129,38 @@
     @apply bg-transparent border border-black rounded-lg p-6;
   }
 
-  /* ... keep existing code (chat-container, circle-animation, etc.) */
+  /* Chat container */
+  .chat-container {
+    @apply flex flex-col h-screen bg-gray-100;
+  }
+
+  .chat-header {
+    @apply bg-gray-200 p-4 text-center;
+  }
+
+  .chat-messages {
+    @apply flex-1 p-4 overflow-y-auto;
+  }
+
+  .chat-input-area {
+    @apply p-4 bg-gray-200 border-t border-gray-300;
+  }
+
+  .chat-input {
+    @apply w-full p-2 border border-gray-300 rounded;
+  }
+
+  /* Circle animation */
+  .circle-container {
+    @apply relative w-64 h-64;
+  }
+
+  .circle {
+    @apply absolute rounded-full border-2 border-opacity-75 animate-spin-slow;
+  }
+
+  /* Typing animation */
+  .typing-container {
+    @apply relative w-full overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5;
+  }
 }

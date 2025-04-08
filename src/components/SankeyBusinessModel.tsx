@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -27,76 +26,76 @@ const SankeyBusinessModel: React.FC = () => {
     
     // Define nodes
     const nodes = [
-      { id: "crcl", name: "C-rcl", x: 0, y: height / 2, width: 60, height: 200, color: "#00afaf" },
+      { id: "crcl", name: "C-rcl", x: 0, y: height / 2, width: 60, height: 200, color: "#4e514e" },
       
       // Revenue streams
       { id: "b2c", name: language === 'en' ? "B2C" : "B2C", 
         desc: language === 'en' ? "Families" : "משפחות", 
-        x: 150, y: 80, width: 120, height: 60, color: "#33bfbf" },
+        x: 150, y: 80, width: 120, height: 60, color: "#4e514e" },
       { id: "b2b", name: language === 'en' ? "B2B" : "B2B", 
         desc: language === 'en' ? "Healthcare Institutions" : "מוסדות רפואיים", 
-        x: 150, y: 160, width: 120, height: 60, color: "#33bfbf" },
+        x: 150, y: 160, width: 120, height: 60, color: "#4e514e" },
       { id: "b2b2c", name: language === 'en' ? "B2B2C" : "B2B2C", 
         desc: language === 'en' ? "Service Providers" : "ספקי שירותים", 
-        x: 150, y: 240, width: 120, height: 60, color: "#33bfbf" },
+        x: 150, y: 240, width: 120, height: 60, color: "#4e514e" },
       { id: "b2g", name: language === 'en' ? "B2G" : "B2G", 
         desc: language === 'en' ? "Government" : "ממשלה", 
-        x: 150, y: 320, width: 120, height: 60, color: "#33bfbf" },
+        x: 150, y: 320, width: 120, height: 60, color: "#4e514e" },
       
       // Value propositions
       { id: "burden", name: language === 'en' ? "Less Burden" : "פחות עומס", 
-        x: 350, y: 40, width: 140, height: 50, color: "#006969" },
+        x: 350, y: 40, width: 140, height: 50, color: "#4e514e" },
       { id: "costs", name: language === 'en' ? "Lower Costs" : "עלויות נמוכות יותר", 
-        x: 350, y: 120, width: 140, height: 50, color: "#006969" },
+        x: 350, y: 120, width: 140, height: 50, color: "#4e514e" },
       { id: "safety", name: language === 'en' ? "Improved Safety" : "בטיחות משופרת", 
-        x: 350, y: 200, width: 140, height: 50, color: "#006969" },
+        x: 350, y: 200, width: 140, height: 50, color: "#4e514e" },
       { id: "coordination", name: language === 'en' ? "Better Coordination" : "תיאום טוב יותר", 
-        x: 350, y: 280, width: 140, height: 50, color: "#006969" },
+        x: 350, y: 280, width: 140, height: 50, color: "#4e514e" },
       { id: "decisions", name: language === 'en' ? "Data-Driven Decisions" : "החלטות מבוססות נתונים", 
-        x: 350, y: 360, width: 140, height: 50, color: "#006969" },
+        x: 350, y: 360, width: 140, height: 50, color: "#4e514e" },
       
       // Stakeholders / Beneficiaries
       { id: "families", name: language === 'en' ? "Families" : "משפחות", 
-        x: 550, y: 120, width: 100, height: 80, color: "#ff8000" },
+        x: 550, y: 120, width: 100, height: 80, color: "#1c1c1b" },
       { id: "patients", name: language === 'en' ? "Patients" : "מטופלים", 
-        x: 550, y: 220, width: 100, height: 80, color: "#ff8000" },
+        x: 550, y: 220, width: 100, height: 80, color: "#1c1c1b" },
       { id: "providers", name: language === 'en' ? "Healthcare Providers" : "ספקי שירותי בריאות", 
-        x: 550, y: 320, width: 100, height: 80, color: "#ff8000" }
+        x: 550, y: 320, width: 100, height: 80, color: "#1c1c1b" }
     ];
     
     // Define links
     const links = [
       // C-rcl to revenue streams
-      { source: "crcl", target: "b2c", value: 35, color: "#66dbe1" },
-      { source: "crcl", target: "b2b", value: 25, color: "#66dbe1" },
-      { source: "crcl", target: "b2b2c", value: 20, color: "#66dbe1" },
-      { source: "crcl", target: "b2g", value: 20, color: "#66dbe1" },
+      { source: "crcl", target: "b2c", value: 35, color: "#4e514e" },
+      { source: "crcl", target: "b2b", value: 25, color: "#4e514e" },
+      { source: "crcl", target: "b2b2c", value: 20, color: "#4e514e" },
+      { source: "crcl", target: "b2g", value: 20, color: "#4e514e" },
       
       // Revenue streams to value propositions
-      { source: "b2c", target: "burden", value: 15, color: "#33bfbf" },
-      { source: "b2c", target: "costs", value: 10, color: "#33bfbf" },
-      { source: "b2c", target: "safety", value: 10, color: "#33bfbf" },
+      { source: "b2c", target: "burden", value: 15, color: "#4e514e" },
+      { source: "b2c", target: "costs", value: 10, color: "#4e514e" },
+      { source: "b2c", target: "safety", value: 10, color: "#4e514e" },
       
-      { source: "b2b", target: "costs", value: 10, color: "#33bfbf" },
-      { source: "b2b", target: "coordination", value: 8, color: "#33bfbf" },
-      { source: "b2b", target: "decisions", value: 7, color: "#33bfbf" },
+      { source: "b2b", target: "costs", value: 10, color: "#4e514e" },
+      { source: "b2b", target: "coordination", value: 8, color: "#4e514e" },
+      { source: "b2b", target: "decisions", value: 7, color: "#4e514e" },
       
-      { source: "b2b2c", target: "burden", value: 7, color: "#33bfbf" },
-      { source: "b2b2c", target: "coordination", value: 7, color: "#33bfbf" },
-      { source: "b2b2c", target: "safety", value: 6, color: "#33bfbf" },
+      { source: "b2b2c", target: "burden", value: 7, color: "#4e514e" },
+      { source: "b2b2c", target: "coordination", value: 7, color: "#4e514e" },
+      { source: "b2b2c", target: "safety", value: 6, color: "#4e514e" },
       
-      { source: "b2g", target: "costs", value: 8, color: "#33bfbf" },
-      { source: "b2g", target: "decisions", value: 6, color: "#33bfbf" },
-      { source: "b2g", target: "safety", value: 6, color: "#33bfbf" },
+      { source: "b2g", target: "costs", value: 8, color: "#4e514e" },
+      { source: "b2g", target: "decisions", value: 6, color: "#4e514e" },
+      { source: "b2g", target: "safety", value: 6, color: "#4e514e" },
       
       // Value propositions to beneficiaries
-      { source: "burden", target: "families", value: 22, color: "#008c8c" },
-      { source: "costs", target: "families", value: 15, color: "#008c8c" },
-      { source: "costs", target: "providers", value: 13, color: "#008c8c" },
-      { source: "safety", target: "patients", value: 22, color: "#008c8c" },
-      { source: "coordination", target: "families", value: 8, color: "#008c8c" },
-      { source: "coordination", target: "providers", value: 7, color: "#008c8c" },
-      { source: "decisions", target: "providers", value: 13, color: "#008c8c" }
+      { source: "burden", target: "families", value: 22, color: "#4e514e" },
+      { source: "costs", target: "families", value: 15, color: "#4e514e" },
+      { source: "costs", target: "providers", value: 13, color: "#4e514e" },
+      { source: "safety", target: "patients", value: 22, color: "#4e514e" },
+      { source: "coordination", target: "families", value: 8, color: "#4e514e" },
+      { source: "coordination", target: "providers", value: 7, color: "#4e514e" },
+      { source: "decisions", target: "providers", value: 13, color: "#4e514e" }
     ];
     
     // Create a map for easier node lookup
