@@ -6,7 +6,7 @@ const Section5: React.FC = () => {
   const {
     t
   } = useLanguage();
-  return <section id="section5" className="section bg-gradient-to-b from-white to-accent-50">
+  return <section id="section5" className="section bg-gradient-to-b from-white to-accent-50 bg-[#f7f7f7]">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section5.title')}</h1>
         
