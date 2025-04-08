@@ -96,8 +96,8 @@ const ROITimelineChart: React.FC = () => {
       .attr("y", 0)
       .attr("width", width - x(breakEvenMonth))
       .attr("height", height)
-      .attr("fill", "transparent") // Changed from #00afaf with opacity to transparent
-      .attr("stroke", "#006969")
+      .attr("fill", "transparent") // Changed from "#00afaf" with opacity to transparent
+      .attr("stroke", "#4e514e") // Changed from "#006969" to "#4e514e"
       .attr("stroke-width", 1)
       .attr("stroke-dasharray", "3,3");
     
@@ -107,7 +107,7 @@ const ROITimelineChart: React.FC = () => {
       .attr("y1", 0)
       .attr("x2", x(breakEvenMonth))
       .attr("y2", height)
-      .attr("stroke", "#ff8000")
+      .attr("stroke", "#1c1c1b") // Changed from "#ff8000" to "#1c1c1b"
       .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
       .attr("opacity", 0);
@@ -118,7 +118,7 @@ const ROITimelineChart: React.FC = () => {
       .attr("y", 20)
       .attr("text-anchor", "middle")
       .attr("transform", `translate(0,-10)`)
-      .attr("fill", "#ff8000")
+      .attr("fill", "#1c1c1b") // Changed from "#ff8000" to "#1c1c1b"
       .attr("font-weight", "bold")
       .text(language === 'en' ? `Break-even: ${breakEvenMonth} months` : `נקודת איזון: ${breakEvenMonth} חודשים`)
       .attr("opacity", 0);
@@ -127,7 +127,7 @@ const ROITimelineChart: React.FC = () => {
     const costPath = chart.append("path")
       .datum(costs)
       .attr("fill", "none")
-      .attr("stroke", "#ff3333")
+      .attr("stroke", "#ff3333") // Keeping red color for cost
       .attr("stroke-width", 2)
       .attr("d", costLine)
       .attr("stroke-dasharray", function() {
@@ -141,7 +141,7 @@ const ROITimelineChart: React.FC = () => {
     const savingsPath = chart.append("path")
       .datum(savings)
       .attr("fill", "none")
-      .attr("stroke", "#00cc66")
+      .attr("stroke", "#4e514e") // Changed from "#00cc66" to "#4e514e"
       .attr("stroke-width", 2)
       .attr("d", savingsLine)
       .attr("stroke-dasharray", function() {
@@ -160,7 +160,7 @@ const ROITimelineChart: React.FC = () => {
       .attr("y", 0)
       .attr("width", 12)
       .attr("height", 12)
-      .attr("fill", "#00cc66");
+      .attr("fill", "#4e514e"); // Changed from "#00cc66" to "#4e514e"
     
     legend.append("text")
       .attr("x", -5)
@@ -173,7 +173,7 @@ const ROITimelineChart: React.FC = () => {
       .attr("y", 20)
       .attr("width", 12)
       .attr("height", 12)
-      .attr("fill", "#ff3333");
+      .attr("fill", "#ff3333"); // Keeping red color for investment
     
     legend.append("text")
       .attr("x", -5)
@@ -186,7 +186,7 @@ const ROITimelineChart: React.FC = () => {
       .attr("x", x(18))
       .attr("y", y(monthlySavings * 18 / 2))
       .attr("text-anchor", "middle")
-      .attr("fill", "#006969")
+      .attr("fill", "#4e514e") // Changed from "#006969" to "#4e514e"
       .attr("font-weight", "bold")
       .attr("opacity", 0)
       .text(language === 'en' ? "ROI Positive Zone" : "אזור ROI חיובי");
@@ -201,7 +201,7 @@ const ROITimelineChart: React.FC = () => {
         .attr("cx", x(month))
         .attr("cy", y(savingsValue))
         .attr("r", 5)
-        .attr("fill", "#00cc66")
+        .attr("fill", "#4e514e") // Changed from "#00cc66" to "#4e514e"
         .attr("opacity", 0)
         .on("mouseover", function(event) {
           d3.select(this).attr("r", 7);

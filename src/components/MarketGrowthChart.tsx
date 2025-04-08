@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -116,7 +117,7 @@ const MarketGrowthChart: React.FC = () => {
     const carePath = chart.append("path")
       .datum(dementiaCare)
       .attr("fill", "none")
-      .attr("stroke", "#008c8c")
+      .attr("stroke", "#4e514e") // Changed from "#008c8c" to "#4e514e"
       .attr("stroke-width", 3)
       .attr("stroke-dasharray", function() {
         return this.getTotalLength();
@@ -130,7 +131,7 @@ const MarketGrowthChart: React.FC = () => {
     const techPath = chart.append("path")
       .datum(dementiaTech)
       .attr("fill", "none")
-      .attr("stroke", "#ff8000")
+      .attr("stroke", "#1c1c1b") // Changed from "#ff8000" to "#1c1c1b"
       .attr("stroke-width", 3)
       .attr("stroke-dasharray", function() {
         return this.getTotalLength();
@@ -151,11 +152,11 @@ const MarketGrowthChart: React.FC = () => {
     
     gradient.append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", "#ff8000");
+      .attr("stop-color", "#1c1c1b"); // Changed from "#ff8000" to "#1c1c1b"
     
     gradient.append("stop")
       .attr("offset", "100%")
-      .attr("stop-color", "#008c8c");
+      .attr("stop-color", "#4e514e"); // Changed from "#008c8c" to "#4e514e"
     
     // Add data points with tooltips
     dementiaCare.forEach(d => {
@@ -163,7 +164,7 @@ const MarketGrowthChart: React.FC = () => {
         .attr("cx", x(d.year))
         .attr("cy", y(d.value))
         .attr("r", 5)
-        .attr("fill", "#008c8c")
+        .attr("fill", "#4e514e") // Changed from "#008c8c" to "#4e514e"
         .attr("opacity", 0)
         .on("mouseover", function(event) {
           d3.select(this).attr("r", 7);
@@ -192,7 +193,7 @@ const MarketGrowthChart: React.FC = () => {
         .attr("cx", x(d.year))
         .attr("cy", y(d.value))
         .attr("r", 5)
-        .attr("fill", "#ff8000")
+        .attr("fill", "#1c1c1b") // Changed from "#ff8000" to "#1c1c1b"
         .attr("opacity", 0)
         .on("mouseover", function(event) {
           d3.select(this).attr("r", 7);
@@ -225,7 +226,7 @@ const MarketGrowthChart: React.FC = () => {
       .attr("y", 0)
       .attr("width", 15)
       .attr("height", 15)
-      .attr("fill", "#008c8c");
+      .attr("fill", "#4e514e"); // Changed from "#008c8c" to "#4e514e"
     
     legend.append("text")
       .attr("x", 25)
@@ -238,7 +239,7 @@ const MarketGrowthChart: React.FC = () => {
       .attr("y", 25)
       .attr("width", 15)
       .attr("height", 15)
-      .attr("fill", "#ff8000");
+      .attr("fill", "#1c1c1b"); // Changed from "#ff8000" to "#1c1c1b"
     
     legend.append("text")
       .attr("x", 25)

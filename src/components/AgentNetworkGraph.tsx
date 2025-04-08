@@ -36,7 +36,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מאחסן ומסנכרן את כל הנתונים בין הסוכנים',
         x: centerX,
         y: centerY,
-        color: "#ff8000",
+        color: "#1c1c1b", // Changed from "#ff8000" to "#1c1c1b"
         radius: 60 // Increased from 50
       },
       {
@@ -47,7 +47,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'ניטור בזמן אמת של סימנים חיוניים, נטילת תרופות, פעילויות',
         x: centerX,
         y: centerY - 160, // Increased distance from center
-        color: "#00afaf",
+        color: "#4e514e", // Changed from "#00afaf" to "#4e514e"
         radius: 45 // Increased from 35
       },
       {
@@ -58,7 +58,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'עוקב אחר שינויים קוגניטיביים ומתאים אישית תרגילים מנטליים',
         x: centerX + 140, // Adjusted position
         y: centerY - 100, // Adjusted position
-        color: "#008c8c",
+        color: "#4e514e", // Changed from "#008c8c" to "#4e514e"
         radius: 45 // Increased from 35
       },
       {
@@ -69,7 +69,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מנטר מצב רוח ומצב רגשי, מציע התערבויות',
         x: centerX + 140, // Adjusted position
         y: centerY + 100, // Adjusted position
-        color: "#006969",
+        color: "#4e514e", // Changed from "#006969" to "#4e514e"
         radius: 45 // Increased from 35
       },
       {
@@ -80,7 +80,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מתזמן פגישות ומתאם בין מטפלים',
         x: centerX,
         y: centerY + 160, // Increased distance from center
-        color: "#33bfbf",
+        color: "#4e514e", // Changed from "#33bfbf" to "#4e514e"
         radius: 45 // Increased from 35
       },
       {
@@ -91,7 +91,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מזהה סיכונים ומנפיק התראות לנפילות, שיטוט, וכו\'',
         x: centerX - 140, // Adjusted position
         y: centerY + 100, // Adjusted position
-        color: "#66dbe1",
+        color: "#4e514e", // Changed from "#66dbe1" to "#4e514e"
         radius: 45 // Increased from 35
       },
       {
@@ -102,7 +102,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'עוקב אחר מצבים רפואיים וניהול תרופות',
         x: centerX - 140, // Adjusted position
         y: centerY - 100, // Adjusted position
-        color: "#99dfdf",
+        color: "#4e514e", // Changed from "#99dfdf" to "#4e514e"
         radius: 45 // Increased from 35
       }
     ];
@@ -152,7 +152,7 @@ const AgentNetworkGraph: React.FC = () => {
       .append("circle")
       .attr("class", "data-flow")
       .attr("r", 5) // Increased from 4
-      .attr("fill", "#ff8000")
+      .attr("fill", "#1c1c1b") // Changed from "#ff8000" to "#1c1c1b"
       .style("opacity", 0)
       .each(function(d) {
         const source = agents.find(a => a.id === d.source);
