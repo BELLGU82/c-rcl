@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Phone, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { t, language } = useLanguage();
@@ -11,12 +10,10 @@ const Contact: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">{t('section5.contact.name')}</h2>
       
       <div className="flex justify-center items-center gap-2 mb-2">
-        <Phone size={20} />
         <p className="text-lg">{t('section5.contact.phone')}</p>
       </div>
       
       <div className="flex justify-center items-center gap-2">
-        <Mail size={20} />
         <p className="text-lg">{t('section5.contact.email')}</p>
       </div>
     </div>
