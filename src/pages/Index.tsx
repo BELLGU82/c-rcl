@@ -9,9 +9,6 @@ import Section3 from '@/components/sections/Section3';
 import Section4 from '@/components/sections/Section4';
 import Section5 from '@/components/sections/Section5';
 
-// Add D3.js
-<lov-add-dependency>d3@7.8.5</lov-add-dependency>
-
 const Index = () => {
   return (
     <LanguageProvider>
