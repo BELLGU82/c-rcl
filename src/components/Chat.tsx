@@ -70,10 +70,20 @@ const Chat: React.FC = () => {
     }
   }, [messages]);
 
+  // Effect to hide suggestions when there are messages
+  useEffect(() => {
+    if (messages.length > 0) {
+      setShowSuggestions(false);
+    }
+  }, [messages]);
+
   const handleSend = async (inputMessage?: string) => {
     const messageToSend = inputMessage || userInput;
     if (!messageToSend.trim()) return;
 
+    // Hide suggestions as soon as a message is sent
+    setShowSuggestions(false);
+    
     const newUserMessage: Message = {
       role: 'user',
       content: messageToSend
@@ -83,7 +93,6 @@ const Chat: React.FC = () => {
     setUserInput('');
     setIsLoading(true);
     setLastError(null);
-    setShowSuggestions(false);
 
     try {
       const response = await fetch(WEBHOOK_URL, {
@@ -104,6 +113,7 @@ const Chat: React.FC = () => {
       }
 
       const data = await response.json();
+      console.log("Received response:", data); // Debug log
       
       let responseText = '';
       
@@ -191,12 +201,30 @@ const Chat: React.FC = () => {
     setIsOpen(false);
   };
 
+  const resetChat = () => {
+    setMessages([]);
+    setUserInput('');
+    setLastError(null);
+    setShowSuggestions(true);
+  };
+
   const renderChat = () => (
     <Card className={`${isMobile ? 'w-full h-full max-h-[85vh]' : 'w-80 md:w-96 h-[600px]'} flex flex-col overflow-hidden shadow-lg animate-scale-in`}>
       <CardHeader className="py-3 px-4 bg-[#f7f7f7] text-[#313131] border-b">
         <div className="flex justify-between items-center">
           <CardTitle className="text-md font-medium">{t('chat.title')}</CardTitle>
           <div className="flex space-x-1">
+            {messages.length > 0 && (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={resetChat} 
+                className="h-8 w-8 text-[#313131] hover:bg-black/5"
+                title="Reset chat"
+              >
+                <RefreshCw className="h-4 w-4" />
+              </Button>
+            )}
             <Button 
               variant="ghost" 
               size="icon" 
