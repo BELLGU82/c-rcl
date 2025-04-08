@@ -101,11 +101,6 @@ const ChallengesBarChart: React.FC = () => {
       .attr("text-anchor", "middle")
       .text(language === 'en' ? "Impact Score (%)" : "ציון השפעה (%)");
     
-    // Color scale
-    const color = d3.scaleLinear<string>()
-      .domain([0, 100])
-      .range(["#66dbe1", "#006969"]);
-    
     // Add bars with animation
     chart.selectAll(".bar")
       .data(challenges)
@@ -116,7 +111,9 @@ const ChallengesBarChart: React.FC = () => {
         .attr("width", x.bandwidth())
         .attr("y", height)
         .attr("height", 0)
-        .attr("fill", d => color(d.value))
+        .attr("fill", "transparent")
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1)
         .on("mouseover", function(event, d) {
           d3.select(this).attr("opacity", 0.8);
           tooltip
@@ -188,7 +185,7 @@ const ChallengesBarChart: React.FC = () => {
       />
       <div
         ref={tooltipRef}
-        className="absolute bg-white dark:bg-gray-800 p-2 rounded shadow-lg text-sm opacity-0 pointer-events-none transition-opacity z-50 max-w-xs"
+        className="absolute bg-white dark:bg-gray-800 p-2 rounded shadow-lg text-sm opacity-0 pointer-events-none transition-opacity z-50 max-w-xs border border-black"
       />
     </div>
   );

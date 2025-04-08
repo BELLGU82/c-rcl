@@ -35,7 +35,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מאחסן ומסנכרן את כל הנתונים בין הסוכנים',
         x: centerX,
         y: centerY,
-        color: '#ff8000',
+        color: "#ff8000",
         radius: 50
       },
       {
@@ -46,7 +46,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'ניטור בזמן אמת של סימנים חיוניים, נטילת תרופות, פעילויות',
         x: centerX,
         y: centerY - 120,
-        color: '#00afaf',
+        color: "#00afaf",
         radius: 35
       },
       {
@@ -57,7 +57,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'עוקב אחר שינויים קוגניטיביים ומתאים אישית תרגילים מנטליים',
         x: centerX + 120,
         y: centerY - 70,
-        color: '#008c8c',
+        color: "#008c8c",
         radius: 35
       },
       {
@@ -68,7 +68,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מנטר מצב רוח ומצב רגשי, מציע התערבויות',
         x: centerX + 120,
         y: centerY + 70,
-        color: '#006969',
+        color: "#006969",
         radius: 35
       },
       {
@@ -79,7 +79,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מתזמן פגישות ומתאם בין מטפלים',
         x: centerX,
         y: centerY + 120,
-        color: '#33bfbf',
+        color: "#33bfbf",
         radius: 35
       },
       {
@@ -90,7 +90,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'מזהה סיכונים ומנפיק התראות לנפילות, שיטוט, וכו\'',
         x: centerX - 120,
         y: centerY + 70,
-        color: '#66dbe1',
+        color: "#66dbe1",
         radius: 35
       },
       {
@@ -101,7 +101,7 @@ const AgentNetworkGraph: React.FC = () => {
           : 'עוקב אחר מצבים רפואיים וניהול תרופות',
         x: centerX - 120,
         y: centerY - 70,
-        color: '#99dfdf',
+        color: "#99dfdf",
         radius: 35
       }
     ];
@@ -134,8 +134,8 @@ const AgentNetworkGraph: React.FC = () => {
         const target = agents.find(a => a.id === d.target);
         return target ? target.y : 0;
       })
-      .attr("stroke", "#00afaf")
-      .attr("stroke-width", 2)
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1)
       .attr("opacity", 0.6)
       .attr("stroke-dasharray", function() {
         return this.getTotalLength();
@@ -210,19 +210,23 @@ const AgentNetworkGraph: React.FC = () => {
       .attr("class", "pulse-circle")
       .attr("r", d => d.radius * 1.3)
       .attr("fill", d => d.color)
-      .attr("opacity", 0.3);
+      .attr("opacity", 0.3)
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1);
     
-    // Add circles for each agent
+    // Add circles for each agent with transparent fill and black stroke
     nodes.append("circle")
       .attr("r", d => d.radius)
-      .attr("fill", d => d.color)
+      .attr("fill", "transparent")
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1)
       .attr("opacity", 0.8);
     
     // Add labels
     nodes.append("text")
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
-      .attr("fill", "white")
+      .attr("fill", "#313131")
       .attr("font-size", d => d.id === 'central' ? "14px" : "12px")
       .attr("font-weight", "bold")
       .text(d => d.name)
@@ -278,7 +282,7 @@ const AgentNetworkGraph: React.FC = () => {
       />
       <div
         ref={tooltipRef}
-        className="absolute bg-white dark:bg-gray-800 p-2 rounded shadow-lg text-sm opacity-0 pointer-events-none transition-opacity z-50 max-w-xs"
+        className="absolute bg-white dark:bg-gray-800 p-2 rounded shadow-lg text-sm opacity-0 pointer-events-none transition-opacity z-50 max-w-xs border border-black"
       />
     </div>
   );
