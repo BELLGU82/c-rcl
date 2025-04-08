@@ -23,10 +23,10 @@ const CircleOfCareAnimation: React.FC = () => {
     
     // Define circles
     const circleData = [
-      { name: "Family", color: "#66dbe1", angle: 0 },
-      { name: "Caregivers", color: "#33bfbf", angle: 90 },
-      { name: "Doctors", color: "#008c8c", angle: 180 },
-      { name: "Patient", color: "#006969", angle: 270 }
+      { name: "Family", color: "transparent", angle: 0 },
+      { name: "Caregivers", color: "transparent", angle: 90 },
+      { name: "Doctors", color: "transparent", angle: 180 },
+      { name: "Patient", color: "transparent", angle: 270 }
     ];
     
     // Draw broken circles
@@ -37,16 +37,18 @@ const CircleOfCareAnimation: React.FC = () => {
       const x = centerX + Math.cos(angleRad) * outerRadius * 0.4;
       const y = centerY + Math.sin(angleRad) * outerRadius * 0.4;
       
-      // Add circles
+      // Add circles with transparent fill and black stroke
       brokenGroup.append("circle")
         .attr("cx", x)
         .attr("cy", y)
         .attr("r", 40)
-        .attr("fill", d.color)
+        .attr("fill", "transparent")
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1)
         .attr("opacity", 0.2)
         .transition()
         .duration(1000)
-        .attr("opacity", 0.8);
+        .attr("opacity", 1);
       
       // Add text
       brokenGroup.append("text")
@@ -54,7 +56,7 @@ const CircleOfCareAnimation: React.FC = () => {
         .attr("y", y)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("fill", "#333")
+        .attr("fill", "#313131")
         .attr("font-size", "12px")
         .attr("font-weight", "bold")
         .text(d.name);
@@ -65,15 +67,17 @@ const CircleOfCareAnimation: React.FC = () => {
       .attr("cx", centerX)
       .attr("cy", centerY)
       .attr("r", 50)
-      .attr("fill", "#ff8000")
-      .attr("opacity", 0.8);
+      .attr("fill", "transparent")
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1)
+      .attr("opacity", 1);
     
     connectedGroup.append("text")
       .attr("x", centerX)
       .attr("y", centerY)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
-      .attr("fill", "white")
+      .attr("fill", "#313131")
       .attr("font-size", "16px")
       .attr("font-weight", "bold")
       .text("C-rcl");
@@ -84,11 +88,11 @@ const CircleOfCareAnimation: React.FC = () => {
       .attr("cy", centerY)
       .attr("r", outerRadius)
       .attr("fill", "none")
-      .attr("stroke", "#00afaf")
-      .attr("stroke-width", 4)
+      .attr("stroke", "#000")
+      .attr("stroke-width", 1)
       .attr("stroke-dasharray", "1000")
       .attr("stroke-dashoffset", "1000")
-      .attr("opacity", 0.8)
+      .attr("opacity", 1)
       .transition()
       .duration(2000)
       .attr("stroke-dashoffset", 0);
@@ -99,13 +103,15 @@ const CircleOfCareAnimation: React.FC = () => {
       const x = centerX + Math.cos(angleRad) * outerRadius;
       const y = centerY + Math.sin(angleRad) * outerRadius;
       
-      // Add circles
+      // Add circles with transparent fill and black stroke
       connectedGroup.append("circle")
         .attr("cx", x)
         .attr("cy", y)
         .attr("r", 30)
-        .attr("fill", d.color)
-        .attr("opacity", 0.8);
+        .attr("fill", "transparent")
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1)
+        .attr("opacity", 1);
       
       // Add text
       connectedGroup.append("text")
@@ -113,7 +119,7 @@ const CircleOfCareAnimation: React.FC = () => {
         .attr("y", y)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("fill", "#333")
+        .attr("fill", "#313131")
         .attr("font-size", "12px")
         .attr("font-weight", "bold")
         .text(d.name);
@@ -124,9 +130,9 @@ const CircleOfCareAnimation: React.FC = () => {
         .attr("y1", centerY)
         .attr("x2", x)
         .attr("y2", y)
-        .attr("stroke", "#00afaf")
-        .attr("stroke-width", 2)
-        .attr("opacity", 0.6)
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1)
+        .attr("opacity", 1)
         .attr("stroke-dasharray", "100")
         .attr("stroke-dashoffset", "100")
         .transition()

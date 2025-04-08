@@ -32,7 +32,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        scrolled ? 'bg-[#f7f7f7]/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 py-4">
@@ -49,38 +49,38 @@ const Header: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('section1')}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
             >
               {t('nav.home')}
             </button>
             <button
               onClick={() => scrollToSection('section2')}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
             >
               {t('nav.problem')}
             </button>
             <button
               onClick={() => scrollToSection('section3')}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
             >
               {t('nav.tech')}
             </button>
             <button
               onClick={() => scrollToSection('section4')}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
             >
               {t('nav.market')}
             </button>
             <button
               onClick={() => scrollToSection('section5')}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary hover:opacity-70 transition-colors font-tt-mono"
             >
               {t('nav.business')}
             </button>
             <Button
-              variant="ghost"
+              variant="outline"
               onClick={toggleLanguage}
-              className="text-foreground hover:text-brand-500 transition-colors"
+              className="text-text-primary border-black hover:opacity-70 transition-colors"
             >
               {t('language')}
             </Button>
@@ -89,16 +89,16 @@ const Header: React.FC = () => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <Button
-              variant="ghost"
+              variant="outline"
               onClick={toggleLanguage}
-              className="text-foreground hover:text-brand-500 transition-colors mr-2"
+              className="text-text-primary border-black hover:opacity-70 transition-colors mr-2"
             >
               {t('language')}
             </Button>
             <Button
-              variant="ghost"
+              variant="outline"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-foreground hover:text-brand-500"
+              className="text-text-primary border-black hover:opacity-70"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,34 +129,34 @@ const Header: React.FC = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 py-2 flex flex-col space-y-2 bg-white dark:bg-gray-900 rounded-md shadow-lg animate-fade-in">
+          <nav className="md:hidden mt-4 py-2 flex flex-col space-y-2 bg-[#f7f7f7] border border-black rounded-md shadow-lg animate-fade-in">
             <button
               onClick={() => scrollToSection('section1')}
-              className="px-4 py-2 text-foreground hover:bg-muted transition-colors text-start"
+              className="px-4 py-2 text-text-primary hover:bg-black/5 transition-colors text-start font-tt-mono"
             >
               {t('nav.home')}
             </button>
             <button
               onClick={() => scrollToSection('section2')}
-              className="px-4 py-2 text-foreground hover:bg-muted transition-colors text-start"
+              className="px-4 py-2 text-text-primary hover:bg-black/5 transition-colors text-start font-tt-mono"
             >
               {t('nav.problem')}
             </button>
             <button
               onClick={() => scrollToSection('section3')}
-              className="px-4 py-2 text-foreground hover:bg-muted transition-colors text-start"
+              className="px-4 py-2 text-text-primary hover:bg-black/5 transition-colors text-start font-tt-mono"
             >
               {t('nav.tech')}
             </button>
             <button
               onClick={() => scrollToSection('section4')}
-              className="px-4 py-2 text-foreground hover:bg-muted transition-colors text-start"
+              className="px-4 py-2 text-text-primary hover:bg-black/5 transition-colors text-start font-tt-mono"
             >
               {t('nav.market')}
             </button>
             <button
               onClick={() => scrollToSection('section5')}
-              className="px-4 py-2 text-foreground hover:bg-muted transition-colors text-start"
+              className="px-4 py-2 text-text-primary hover:bg-black/5 transition-colors text-start font-tt-mono"
             >
               {t('nav.business')}
             </button>
