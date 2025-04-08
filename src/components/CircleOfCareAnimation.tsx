@@ -97,14 +97,39 @@ const CircleOfCareAnimation: React.FC = () => {
       .duration(2000)
       .attr("stroke-dashoffset", 0);
     
-    // Draw nodes on the circle
+    // Create a group for outer node circles and text
     circleData.forEach(d => {
       const angleRad = (d.angle * Math.PI) / 180;
-      const x = centerX + Math.cos(angleRad) * outerRadius;
-      const y = centerY + Math.sin(angleRad) * outerRadius;
+      const nodeDistance = outerRadius; 
+      const x = centerX + Math.cos(angleRad) * nodeDistance;
+      const y = centerY + Math.sin(angleRad) * nodeDistance;
+      
+      // Create a group for each node
+      const nodeGroup = connectedGroup.append("g");
+      
+      // Add the text first (so it's behind the circle)
+      // Draw text labels on the outside of the nodes
+      const textOffsetMultiplier = 1.3; // Position text slightly outside the circle
+      const textX = centerX + Math.cos(angleRad) * (nodeDistance * textOffsetMultiplier);
+      const textY = centerY + Math.sin(angleRad) * (nodeDistance * textOffsetMultiplier);
+      
+      // Adjust text anchor based on position
+      let textAnchor = "middle";
+      if (d.angle === 0) textAnchor = "start";      // right side
+      else if (d.angle === 180) textAnchor = "end"; // left side
+      
+      nodeGroup.append("text")
+        .attr("x", textX)
+        .attr("y", textY)
+        .attr("text-anchor", textAnchor)
+        .attr("dominant-baseline", "middle")
+        .attr("fill", "#313131")
+        .attr("font-size", "12px")
+        .attr("font-weight", "bold")
+        .text(d.name);
       
       // Add circles with transparent fill and black stroke
-      connectedGroup.append("circle")
+      nodeGroup.append("circle")
         .attr("cx", x)
         .attr("cy", y)
         .attr("r", 30)
@@ -112,17 +137,6 @@ const CircleOfCareAnimation: React.FC = () => {
         .attr("stroke", "#000")
         .attr("stroke-width", 1)
         .attr("opacity", 1);
-      
-      // Add text
-      connectedGroup.append("text")
-        .attr("x", x)
-        .attr("y", y)
-        .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
-        .attr("fill", "#313131")
-        .attr("font-size", "12px")
-        .attr("font-weight", "bold")
-        .text(d.name);
       
       // Add connecting lines
       connectedGroup.append("line")
