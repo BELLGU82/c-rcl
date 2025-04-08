@@ -1,13 +1,11 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AgentNetworkGraph from '../AgentNetworkGraph';
-
 const Section3: React.FC = () => {
-  const { t } = useLanguage();
-  
-  return (
-    <section id="section3" className="section">
+  const {
+    t
+  } = useLanguage();
+  return <section id="section3" className="section">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section3.title')}</h1>
         
@@ -29,20 +27,18 @@ const Section3: React.FC = () => {
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section3.value.title')}</h2>
             <div className="space-y-4">
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section3.value.families')}</p>
+                <p className="text-text-primary font-medium">{t('section3.value.families')}</p>
               </div>
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section3.value.doctors')}</p>
+                <p className="text-text-primary font-medium">{t('section3.value.doctors')}</p>
               </div>
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section3.value.patients')}</p>
+                <p className="text-text-primary font-medium">{t('section3.value.patients')}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Section3;

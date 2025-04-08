@@ -1,15 +1,13 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import MarketGrowthChart from '../MarketGrowthChart';
 import SankeyBusinessModel from '../SankeyBusinessModel';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-
 const Section4: React.FC = () => {
-  const { t } = useLanguage();
-  
-  return (
-    <section id="section4" className="section">
+  const {
+    t
+  } = useLanguage();
+  return <section id="section4" className="section">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section4.title')}</h1>
         
@@ -21,16 +19,16 @@ const Section4: React.FC = () => {
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section4.business.title')}</h2>
             <div className="space-y-4">
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section4.business.model1')}</p>
+                <p className="text-text-primary font-medium">{t('section4.business.model1')}</p>
               </div>
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section4.business.model2')}</p>
+                <p className="text-text-primary font-medium">{t('section4.business.model2')}</p>
               </div>
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section4.business.model3')}</p>
+                <p className="text-text-primary font-medium">{t('section4.business.model3')}</p>
               </div>
               <div className="p-3 border border-black rounded-md bg-transparent">
-                <p className="font-semibold text-text-primary">{t('section4.business.model4')}</p>
+                <p className="text-text-primary font-medium">{t('section4.business.model4')}</p>
               </div>
             </div>
             <p className="text-text-primary mt-4 font-medium">{t('section4.business.conclusion')}</p>
@@ -49,8 +47,6 @@ const Section4: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Section4;
