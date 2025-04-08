@@ -1,13 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import Header from '@/components/Header';
+import Chat from '@/components/Chat';
+import Section1 from '@/components/sections/Section1';
+import Section2 from '@/components/sections/Section2';
+import Section3 from '@/components/sections/Section3';
+import Section4 from '@/components/sections/Section4';
+import Section5 from '@/components/sections/Section5';
+
+// Add D3.js
+<lov-add-dependency>d3@7.8.5</lov-add-dependency>
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <LanguageProvider>
+      <div className="min-h-screen">
+        <Header />
+        <main className="pt-16">
+          <Section1 />
+          <Section2 />
+          <Section3 />
+          <Section4 />
+          <Section5 />
+        </main>
+        <Chat />
       </div>
-    </div>
+    </LanguageProvider>
   );
 };
 
