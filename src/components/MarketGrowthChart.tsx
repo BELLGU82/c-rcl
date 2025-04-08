@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -17,7 +16,7 @@ const MarketGrowthChart: React.FC = () => {
     // Clear previous content
     svg.selectAll("*").remove();
     
-    const margin = { top: 40, right: 80, bottom: 60, left: 60 };
+    const margin = { top: 40, right: 150, bottom: 60, left: 60 };
     const width = 700 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
     
@@ -217,9 +216,9 @@ const MarketGrowthChart: React.FC = () => {
         .attr("opacity", 1);
     });
     
-    // Add a legend
+    // Reposition the legend to the right side of the chart to avoid overlap
     const legend = chart.append("g")
-      .attr("transform", `translate(${width - 20}, 10)`);
+      .attr("transform", `translate(${width + 20}, 20)`);
     
     legend.append("rect")
       .attr("x", 0)
@@ -229,9 +228,9 @@ const MarketGrowthChart: React.FC = () => {
       .attr("fill", "#008c8c");
     
     legend.append("text")
-      .attr("x", -10)
+      .attr("x", 25)
       .attr("y", 12)
-      .attr("text-anchor", "end")
+      .attr("text-anchor", "start")
       .text(language === 'en' ? "Dementia Care Market" : "שוק הטיפול בדמנציה");
     
     legend.append("rect")
@@ -242,9 +241,9 @@ const MarketGrowthChart: React.FC = () => {
       .attr("fill", "#ff8000");
     
     legend.append("text")
-      .attr("x", -10)
+      .attr("x", 25)
       .attr("y", 37)
-      .attr("text-anchor", "end")
+      .attr("text-anchor", "start")
       .text(language === 'en' ? "Dementia Tech Market" : "שוק הטכנולוגיה לדמנציה");
     
     legend.append("rect")
@@ -256,9 +255,9 @@ const MarketGrowthChart: React.FC = () => {
       .attr("opacity", 0.2);
     
     legend.append("text")
-      .attr("x", -10)
+      .attr("x", 25)
       .attr("y", 62)
-      .attr("text-anchor", "end")
+      .attr("text-anchor", "start")
       .text(language === 'en' ? "Market Opportunity" : "הזדמנות שוק");
 
     // Observer to trigger animation when in viewport
