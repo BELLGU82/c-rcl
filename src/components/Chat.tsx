@@ -111,14 +111,14 @@ const Chat: React.FC = () => {
 
   const renderChat = () => (
     <Card className={`${isMobile ? 'w-full h-full max-h-[85vh]' : 'w-80 md:w-96 h-[600px]'} flex flex-col overflow-hidden shadow-lg animate-scale-in`}>
-      <CardHeader className="py-3 px-4 bg-brand-500 text-white">
+      <CardHeader className="py-3 px-4 bg-[#f7f7f7] text-[#313131] border-b">
         <div className="flex justify-between items-center">
           <CardTitle className="text-md font-medium">{t('chat.title')}</CardTitle>
           <Button 
             variant="ghost" 
             size="icon" 
             onClick={toggleChat} 
-            className="h-8 w-8 text-white hover:bg-brand-600"
+            className="h-8 w-8 text-[#313131] hover:bg-black/5"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -127,7 +127,7 @@ const Chat: React.FC = () => {
       <CardContent className="flex-1 overflow-y-auto p-3 space-y-4">
         {messages.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center text-center text-muted-foreground">
-            <MessageCircle className="h-12 w-12 mb-4 text-brand-300" />
+            <MessageCircle className="h-12 w-12 mb-4 text-[#313131]" />
             <p>{t('chat.title')}</p>
           </div>
         ) : (
@@ -139,7 +139,7 @@ const Chat: React.FC = () => {
               <div
                 className={`max-w-[80%] rounded-lg px-4 py-2 ${
                   message.role === 'user'
-                    ? 'bg-brand-500 text-white'
+                    ? 'bg-[#f7f7f7] text-[#313131] border border-[#313131]/20'
                     : 'bg-muted'
                 }`}
               >
@@ -214,7 +214,7 @@ const Chat: React.FC = () => {
             onClick={handleSend} 
             disabled={isLoading || !userInput.trim()} 
             size="icon"
-            className="bg-brand-500 hover:bg-brand-600"
+            className="bg-[#f7f7f7] hover:bg-[#e7e7e7] text-[#313131] border border-[#313131]/20"
           >
             <Send className="h-4 w-4" />
           </Button>
@@ -236,7 +236,7 @@ const Chat: React.FC = () => {
           ) : (
             <Button
               onClick={toggleChat}
-              className={`fixed bottom-4 ${chatPosition} z-40 rounded-full w-12 h-12 bg-brand-500 hover:bg-brand-600 shadow-lg`}
+              className={`fixed bottom-4 ${chatPosition} z-40 rounded-full w-12 h-12 bg-[#f7f7f7] hover:bg-[#e7e7e7] text-[#313131] border border-[#313131]/20 shadow-lg`}
             >
               <MessageCircle className="h-6 w-6" />
             </Button>
@@ -248,7 +248,7 @@ const Chat: React.FC = () => {
             <Button
               onClick={toggleChat}
               variant="ghost"
-              className={`self-end mb-2 bg-brand-500 text-white rounded-t-lg rounded-b-none py-2 px-4 hover:bg-brand-600`}
+              className={`self-end mb-2 bg-[#f7f7f7] text-[#313131] rounded-t-lg rounded-b-none py-2 px-4 hover:bg-[#e7e7e7] border border-[#313131]/20 border-b-0`}
             >
               {isOpen ? (
                 <>
