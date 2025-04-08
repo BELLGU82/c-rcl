@@ -90,14 +90,16 @@ const ROITimelineChart: React.FC = () => {
       .attr("fill", "currentColor")
       .text(language === 'en' ? "Amount ($)" : "סכום ($)");
     
-    // Highlight break-even area
+    // Highlight break-even area - Making this transparent now (was light green)
     chart.append("rect")
       .attr("x", x(breakEvenMonth))
       .attr("y", 0)
       .attr("width", width - x(breakEvenMonth))
       .attr("height", height)
-      .attr("fill", "#00afaf")
-      .attr("opacity", 0.1);
+      .attr("fill", "transparent") // Changed from #00afaf with opacity to transparent
+      .attr("stroke", "#006969")
+      .attr("stroke-width", 1)
+      .attr("stroke-dasharray", "3,3");
     
     // Add break-even line
     chart.append("line")

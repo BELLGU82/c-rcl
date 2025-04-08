@@ -5,14 +5,12 @@ import ROITimelineChart from '../ROITimelineChart';
 import SankeyBusinessModel from '../SankeyBusinessModel';
 import SavingsDataCards from '../SavingsDataCards';
 import Timeline from '../Timeline';
-import Quote from '../Quote';
-import Contact from '../Contact';
 
 const Section5: React.FC = () => {
-  const {
-    t
-  } = useLanguage();
-  return <section id="section5" className="section bg-transparent">
+  const { t } = useLanguage();
+  
+  return (
+    <section id="section5" className="section bg-transparent">
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section5.title')}</h1>
         
@@ -63,13 +61,9 @@ const Section5: React.FC = () => {
         <div className="mb-12">
           <Timeline />
         </div>
-        
-        <div className="mb-12">
-          <Quote />
-        </div>
-        
-        <Contact />
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Section5;
