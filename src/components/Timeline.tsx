@@ -53,10 +53,7 @@ const Timeline: React.FC = () => {
         {timelineStages.map(stage => (
           <div 
             key={stage.id} 
-            className={`transparent-container bg-careteal-50 bg-opacity-50 p-6 flex flex-col min-h-[180px] ${
-              stage.status === 'completed' ? 'bg-careteal-100' : 
-              stage.status === 'current' ? 'bg-careteal-50' : 'bg-careteal-50'
-            }`}
+            className={`transparent-container p-6 flex flex-col min-h-[180px] bg-transparent border border-black`}
           >
             <div className="flex items-center mb-2">
               <h3 className="font-bold text-lg text-text-primary">{stage.title}</h3>

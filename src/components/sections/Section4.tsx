@@ -14,7 +14,7 @@ const Section4: React.FC = () => {
         <MarketGrowthChart />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="transparent-container card-hover">
+          <div className="transparent-container bg-transparent border border-black card-hover">
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section4.market.title')}</h2>
             <ul className="space-y-3 list-disc list-inside text-text-primary">
               <li>{t('section4.market.point1')}</li>
@@ -25,7 +25,7 @@ const Section4: React.FC = () => {
             <p className="text-text-primary mt-4 font-medium italic">{t('section4.market.conclusion')}</p>
           </div>
           
-          <div className="transparent-container card-hover">
+          <div className="transparent-container bg-transparent border border-black card-hover">
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section4.business.title')}</h2>
             <div className="space-y-4">
               <div className="p-3 border border-black rounded-md bg-transparent">

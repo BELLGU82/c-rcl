@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
   const { language } = useLanguage();
   
   return (
-    <div className="w-full max-w-5xl mx-auto bg-careteal-500 rounded-lg p-8 text-white text-center">
+    <div className="w-full max-w-5xl mx-auto bg-transparent border border-black rounded-lg p-8 text-text-primary text-center">
       <h2 className="text-2xl md:text-3xl font-bold mb-6">Bell</h2>
       
       <div className="flex flex-col items-center justify-center space-y-4">

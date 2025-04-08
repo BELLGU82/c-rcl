@@ -37,7 +37,7 @@ const SavingsDataCards: React.FC = () => {
         {savingsData.map(item => (
           <div 
             key={item.id} 
-            className="transparent-container bg-[#FFF5E6] bg-opacity-50 p-6 flex flex-col items-center justify-center text-center min-h-[150px]"
+            className="transparent-container bg-transparent p-6 flex flex-col items-center justify-center text-center min-h-[150px] border border-black"
           >
             <p className="font-bold text-lg mb-2 text-accent-700">{item.amount}</p>
             <p className="text-text-primary">{item.description}</p>

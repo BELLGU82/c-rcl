@@ -12,19 +12,19 @@ const Section5: React.FC = () => {
       <div className="section-content">
         <h1 className="section-title gradient-text">{t('section5.title')}</h1>
         
-        <div className="bg-white/80 p-6 rounded-lg shadow-md mb-12">
+        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
           <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.savings.title')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-accent-100 rounded-lg text-center">
+            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
               <p className="text-lg font-bold text-accent-800">{t('section5.savings.point1')}</p>
             </div>
-            <div className="p-4 bg-accent-100 rounded-lg text-center">
+            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
               <p className="text-lg font-bold text-accent-800">{t('section5.savings.point2')}</p>
             </div>
-            <div className="p-4 bg-accent-100 rounded-lg text-center">
+            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
               <p className="text-lg font-bold text-accent-800">{t('section5.savings.point3')}</p>
             </div>
-            <div className="p-4 bg-accent-100 rounded-lg text-center">
+            <div className="p-4 bg-transparent border border-black rounded-lg text-center">
               <p className="text-lg font-bold text-accent-800">{t('section5.savings.point4')}</p>
             </div>
           </div>
@@ -35,7 +35,7 @@ const Section5: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white/80 p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-transparent border border-black p-6 rounded-lg shadow-md card-hover">
             <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.competitors.title')}</h2>
             <p className="text-gray-700 mb-2">{t('section5.competitors.fragmented')}</p>
             <ul className="mb-4 space-y-1 list-disc list-inside text-gray-700">
@@ -52,7 +52,7 @@ const Section5: React.FC = () => {
             </ul>
           </div>
           
-          <div className="bg-white/80 p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-transparent border border-black p-6 rounded-lg shadow-md card-hover">
             <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.status.title')}</h2>
             <p className="text-gray-700 mb-2">{t('section5.status.current')}</p>
             <p className="text-gray-700 mb-4">
@@ -70,29 +70,29 @@ const Section5: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white/80 p-6 rounded-lg shadow-md mb-12">
+        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
           <h2 className="text-2xl font-bold mb-4 text-brand-600">{t('section5.timeline.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-brand-100 rounded-lg">
+            <div className="p-4 bg-transparent border border-black rounded-lg">
               <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage1')}</p>
               <p className="text-sm text-brand-700">{t('section5.timeline.stage1.points')}</p>
             </div>
-            <div className="p-4 bg-brand-100 rounded-lg">
+            <div className="p-4 bg-transparent border border-black rounded-lg">
               <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage2')}</p>
               <p className="text-sm text-brand-700">{t('section5.timeline.stage2.points')}</p>
             </div>
-            <div className="p-4 bg-brand-100 rounded-lg">
+            <div className="p-4 bg-transparent border border-black rounded-lg">
               <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage3')}</p>
               <p className="text-sm text-brand-700">{t('section5.timeline.stage3.points')}</p>
             </div>
-            <div className="p-4 bg-brand-100 rounded-lg">
+            <div className="p-4 bg-transparent border border-black rounded-lg">
               <p className="text-lg font-bold text-brand-800 mb-2">{t('section5.timeline.stage4')}</p>
               <p className="text-sm text-brand-700">{t('section5.timeline.stage4.points')}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white/80 p-6 rounded-lg shadow-md mb-12">
+        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md mb-12">
           <blockquote className="italic text-lg text-center mb-2">
             {t('section5.cta.quote')}
           </blockquote>
@@ -102,7 +102,7 @@ const Section5: React.FC = () => {
           </p>
         </div>
         
-        <div className="bg-gradient-to-r from-brand-500 to-careteal-600 p-6 rounded-lg shadow-md text-white text-center">
+        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md text-text-primary text-center">
           <h2 className="text-2xl font-bold mb-4">{t('section5.contact.name')}</h2>
           <p className="text-lg">{t('section5.contact.phone')}</p>
           <p className="text-lg">{t('section5.contact.email')}</p>

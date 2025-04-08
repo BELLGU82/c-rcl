@@ -14,7 +14,7 @@ const Section3: React.FC = () => {
         <AgentNetworkGraph />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="transparent-container card-hover">
+          <div className="transparent-container bg-transparent border border-black card-hover">
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section3.advantages.title')}</h2>
             <ul className="space-y-2 list-disc list-inside text-text-primary">
               <li>{t('section3.advantages.point1')}</li>
@@ -25,7 +25,7 @@ const Section3: React.FC = () => {
             <p className="text-text-primary mt-4 font-medium">{t('section3.advantages.conclusion')}</p>
           </div>
           
-          <div className="transparent-container card-hover">
+          <div className="transparent-container bg-transparent border border-black card-hover">
             <h2 className="text-2xl font-bold mb-4 text-text-primary">{t('section3.value.title')}</h2>
             <div className="space-y-4">
               <div className="p-3 border border-black rounded-md bg-transparent">

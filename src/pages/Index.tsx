@@ -8,6 +8,8 @@ import Section2 from '@/components/sections/Section2';
 import Section3 from '@/components/sections/Section3';
 import Section4 from '@/components/sections/Section4';
 import Section5 from '@/components/sections/Section5';
+import Quote from '@/components/Quote';
+import Contact from '@/components/Contact';
 
 const Index = () => {
   return (
@@ -20,6 +22,12 @@ const Index = () => {
           <Section3 />
           <Section4 />
           <Section5 />
+          <div className="container mx-auto px-4 py-12">
+            <Quote />
+            <div className="mt-12">
+              <Contact />
+            </div>
+          </div>
         </main>
         <Chat />
       </div>
