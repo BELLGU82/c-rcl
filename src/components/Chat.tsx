@@ -1,11 +1,10 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MessageCircle, X, ChevronUp, ChevronDown, Send } from 'lucide-react';
+import { MessageCircle, X, ChevronUp, ChevronDown, Send, Minimize } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -109,19 +108,33 @@ const Chat: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const minimizeChat = () => {
+    setIsOpen(false);
+  };
+
   const renderChat = () => (
     <Card className={`${isMobile ? 'w-full h-full max-h-[85vh]' : 'w-80 md:w-96 h-[600px]'} flex flex-col overflow-hidden shadow-lg animate-scale-in`}>
       <CardHeader className="py-3 px-4 bg-[#f7f7f7] text-[#313131] border-b">
         <div className="flex justify-between items-center">
           <CardTitle className="text-md font-medium">{t('chat.title')}</CardTitle>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleChat} 
-            className="h-8 w-8 text-[#313131] hover:bg-black/5"
-          >
-            <X className="h-4 w-4" />
-          </Button>
+          <div className="flex space-x-1">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={minimizeChat} 
+              className="h-8 w-8 text-[#313131] hover:bg-black/5"
+            >
+              <Minimize className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleChat} 
+              className="h-8 w-8 text-[#313131] hover:bg-black/5"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="flex-1 overflow-y-auto p-3 space-y-4">
