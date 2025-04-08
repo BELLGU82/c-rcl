@@ -6,6 +6,7 @@ import SankeyBusinessModel from '../SankeyBusinessModel';
 import SavingsDataCards from '../SavingsDataCards';
 import Timeline from '../Timeline';
 import Quote from '../Quote';
+import Contact from '../Contact';
 
 const Section5: React.FC = () => {
   const {
@@ -67,11 +68,7 @@ const Section5: React.FC = () => {
           <Quote />
         </div>
         
-        <div className="bg-transparent border border-black p-6 rounded-lg shadow-md text-text-primary text-center">
-          <h2 className="text-2xl font-bold mb-4">{t('section5.contact.name')}</h2>
-          <p className="text-lg">{t('section5.contact.phone')}</p>
-          <p className="text-lg">{t('section5.contact.email')}</p>
-        </div>
+        <Contact />
       </div>
     </section>;
 };
